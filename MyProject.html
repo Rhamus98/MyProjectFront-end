@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MyProject</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="MyProjectCSS.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<style>
+  body{
+    background-image: url("car-background-wallpaper.jpg");
+    background-size: 1400px 775px;
+    background-repeat: no-repeat;
+  }
+
+</style>
+
+</head>
+ 
+<body>
+  <script>
+    function sendQuestion(){
+      
+      if(document.getElementById("username").value==""){
+        alert("Enter your username, it is missing");
+        document.getElementById("username").focus();
+      }else if(document.getElementById("question").value==""){
+        alert("Enter the question, it is missing");
+        document.getElementById("question").focus();
+      }else if(document.getElementById("answer").value==""){
+         alert("Enter the answer, it is missing");
+        document.getElementById("answer").focus();
+      }else{
+          let request = new XMLHttpRequest();
+          request.open("POST", "http://localhost:9002/saveQuestion");
+          request.setRequestHeader("Content-Type", "application/json");
+          const questiondata={
+          "username" : document.getElementById("username").value,
+          "question" : document.getElementById("question").value,
+          "answer" : document.getElementById("answer").value
+      }
+    }
+      alert(" data send")
+      return false;
+    }
+  </script>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <img src="autoblog.jpg" alt="logo" style="width:40px;">
+  </a>
+  
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="MyProject.html">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="AboutUs.html">About Us</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="Questions.html">Q and A Hub</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+
+  <div class="container">
+  <h1 style="color:white;">CarForumUK</h1>
+  <p style="color:white;">All your car related questions in one place...</p> 
+
+<div style="float: right;
+    position: relative;
+    bottom: 97px;
+    left: 80px;">
+<a href="https://en-gb.facebook.com/groups/JerseyCarForum/" class="fa fa-facebook"></a>
+<a href="https://twitter.com/autosport?lang=en" class="fa fa-twitter"></a>
+<a href="https://www.instagram.com/exotic_performance/?utm_source=ig_embed" class="fa fa-instagram"></a>
+</div>
+
+
+<div class="container">
+  <h2 style="color:white;">Question and Answer List</h2>
+  <form action="" onsubmit="return sendQuestion()" method="POST">
+    <div class="form-group">
+      <label for="Username" style="color:white;">Username:</label>
+      <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+    </div>
+    <div class="form-group">
+      <label for="answer" style="color:white;">Question:</label>
+      <input type="text" class="form-control" id="question" placeholder="Enter Question" name="question">
+    </div>
+    <div class="form-group">
+      <label for="answer" style="color:white;">Answer:</label>
+      <input type="text" class="form-control" id="answer" placeholder="Enter Answer" name="answer">
+    </div>
+   
+    <button type="submit" class="btn btn-default" style="color:white;" >Submit</button>
+  </form>
+</div>
+</body>
+</html>
